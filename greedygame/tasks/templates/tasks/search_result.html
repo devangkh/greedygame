@@ -1,0 +1,34 @@
+{% extends "tasks/base.html" %}
+{% block container %}
+<h1>{{query_string}}</h1>
+
+<h1>Task</h1>
+<ul>
+{% for task in task_entries %}
+<li>Title == {{ task.title  }}</li>
+<li>Tags == {% for tag in task.tags.all %}{{tag.name}}, {% endfor %}</li>
+<li>createds at == {{ task.created_date  }}</li>
+<li>due date == {{ task.due_date  }}</li>
+<li>completed? == {{ task.completed  }}</li>
+<li>completed_date == {{ task.completed_date  }}</li>
+<li>created by == {{ task.created_by  }}</li>
+<li>note == {{ task.note  }}</li>
+<li>priority == {{ task.priority }}</li>
+<li>============================================</li>
+{% empty %}
+    <li>No tasks yet.</li>
+{% endfor %}
+</ul>
+
+<h1>Tag</h1>
+<ul>
+{% for tag in tag_entries %}
+<li>Name == {{ tag.name  }}</li>
+<li>============================================</li>
+{% empty %}
+    <li>No tags yet.</li>
+{% endfor %}
+</ul>
+
+
+{% endblock %}

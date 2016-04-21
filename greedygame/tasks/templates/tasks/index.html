@@ -1,0 +1,36 @@
+{% extends "tasks/base.html" %}
+{% block container %}
+<div class="container">
+	<div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div id="imaginary_container"> 
+            <form id="newSearch" method="get" action="/tasks/search/">
+                <div class="input-group stylish-input-group">
+                	
+                    <input type="text" class="form-control"  name="q" placeholder="Search" >
+                    <span class="input-group-addon">
+                        <button type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>  
+                    </span>
+                   
+                </div>
+                 </form>
+            </div>
+        </div>
+	</div>
+	<br><br><br>
+	<div class="row">
+	    <div class="col-md-4">
+	    	<p><a href="{% url 'Task-add'%}" class="btn btn-primary btn-block" data-toggle="button">Add new task</a></p>
+	    	<p><a href="{% url 'Task_detail'%}" class="btn btn-primary btn-block" data-toggle="button">See all task</a></p>
+	    </div>
+	    <div class="col-md-4">
+	    </div>
+	    <div class="col-md-4">
+	    	<p><a href="{% url 'Tag-add'%}" class="btn btn-primary btn-block" data-toggle="button">Add new tag</a></p>
+	    	<p><a href="{% url 'Tag_detail'%}" class="btn btn-primary btn-block" data-toggle="button">See all tag</a></p>
+	    </div>
+	</div>
+</div>
+{% endblock %}

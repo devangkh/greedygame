@@ -1,0 +1,25 @@
+{% extends "tasks/base.html" %}
+{% block container %}
+<div class="container">
+<div class="row">
+<h1>Tags</h1>
+<h2><a href="{% url 'Tag-add' %}"><button class="btn btn-primary">Add New Tag</button></a></h2>
+<br>
+
+<h3> All tags</h3>
+<ul>
+{% for tag in object_list %}
+<p>{{ tag.name  }}     
+<a href="{% url 'Tag-delete' pk=tag.id %}">Delete</a> |
+<a href="{% url 'Tag-update' pk=tag.id %}">Update</a> |
+<a href="{% url 'search' %}?q={{tag.name}}">Search</a>
+</p>
+{% empty %}
+    <li>No articles yet.</li>
+{% endfor %}
+</ul>
+</div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "tasks/base.html" %}
+{% block container %}
+
+<div class="container">
+<div class="row">
+<h1>Tasks</h1>
+<h2><a href="{% url 'Task-add' %}"><button class="btn btn-primary">Add New Task</button></a></h2>
+<br/>
+<h3> All tasks </h3>
+<ul>
+{% for task in object_list %}
+<li>Title == {{ task.title  }}</li>
+<li>tags == {% for tag in task.tags.all %}{{tag.name}}, {%endfor%}</li>
+<li>createds at == {{ task.created_date  }}</li>
+<li>due date == {{ task.due_date  }}</li>
+<li>completed? == {{ task.completed  }}</li>
+<li>completed_date == {{ task.completed_date  }}</li>
+<li>created by == {{ task.created_by  }}</li>
+<li>note == {{ task.note  }}</li>
+<li>priority == {{ task.priority }}</li>
+<a href="{% url 'Task-delete' pk=task.id %}">Delete</a> |
+<a href="{% url 'Task-update' pk=task.id %}">Update</a>
+<li>---------------------------------------------------</li>
+{% empty %}
+    <li>No articles yet.</li>
+{% endfor %}
+</ul>
+
+</div>
+</div>
+{% endblock %}
